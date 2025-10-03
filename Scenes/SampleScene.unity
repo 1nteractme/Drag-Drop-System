@@ -625,7 +625,7 @@ MonoBehaviour:
   m_Sprite: {fileID: 21300000, guid: 41b901551f67245e1b28b2293773b98d, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
-  m_FillCenter: 0
+  m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
@@ -2512,7 +2512,7 @@ MonoBehaviour:
   m_Sprite: {fileID: 21300000, guid: 41b901551f67245e1b28b2293773b98d, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
-  m_FillCenter: 0
+  m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
@@ -3051,7 +3051,7 @@ MonoBehaviour:
   m_Sprite: {fileID: 21300000, guid: face576a14e2f46a0a35534ab83b97e6, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
-  m_FillCenter: 0
+  m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
@@ -3388,7 +3388,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 05918e117e6c7454da53c79018b66493, type: 2}
   itemID: 0
   itemAmount: 1
-  addItemKey: 97
+  addItemKey: 114
   logDetailedInfo: 1
 --- !u!114 &1268397907
 MonoBehaviour:
@@ -4488,7 +4488,7 @@ MonoBehaviour:
   m_Sprite: {fileID: 21300000, guid: face576a14e2f46a0a35534ab83b97e6, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
-  m_FillCenter: 0
+  m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
