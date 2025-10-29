@@ -10,11 +10,13 @@ public class InventoryTester : MonoBehaviour
     [SerializeField] private int itemID;
     [SerializeField] private int itemAmount;
 
-    [Space]
+    [Space] 
     [Header("Debug Settings")] 
-    [SerializeField] private KeyCode addItemKey;
     [SerializeField] private bool logDetailedInfo = true;
-    
+    private const KeyCode SAVE_KEY = KeyCode.S;
+    private const KeyCode RANDOM_ITEM_KEY = KeyCode.R;
+    private const KeyCode ADD_TEST_KEY = KeyCode.A;
+
     private void Start()
     {
         if (InventorySystem.Instance == null)
@@ -42,39 +44,31 @@ public class InventoryTester : MonoBehaviour
     {
         if (InventorySystem.Instance == null) return;
 
-        if (Input.GetKeyDown(addItemKey))
-            AddItem(itemAmount, itemAmount, addItemKey);
+        AddItem(itemAmount, itemAmount);
     }
 
-    private void AddItem(int itemIndex, int quantity, KeyCode key)
+    private void AddItem(int itemIndex, int quantity)
     {
-        switch (key)
-        {
-            case KeyCode.S:
-                InventorySystem.Instance.SaveInventory();
-                break;
-            
-            case KeyCode.R:
-                AddRandomItem();
-                break;
-            
-            case KeyCode.A:
-                AddTestItem(itemIndex, quantity);
-                break;
-            
-        }
+        if (Input.GetKeyDown(SAVE_KEY))
+            InventorySystem.Instance.SaveInventory();
+
+        if (Input.GetKeyDown(RANDOM_ITEM_KEY))
+            AddRandomItem();
+
+        if (Input.GetKeyDown(ADD_TEST_KEY))
+            AddTestItem(itemIndex, quantity);
     }
-    
+
     private void AddTestItem(int index, int quantity)
     {
-        if (index < 0 || index >= testItems.Length || testItems[index] == null)return;
+        if (index < 0 || index >= testItems.Length || testItems[index] == null) return;
 
         var success = InventorySystem.Instance.AddItem(testItems[index], quantity);
 
         if (logDetailedInfo)
         {
             TooltipSystem.Instance.HideTooltip();
-            
+
             if (success)
                 Debug.Log($"Successfully added {quantity}x {testItems[index].itemName}");
             else
@@ -89,15 +83,15 @@ public class InventoryTester : MonoBehaviour
             Debug.LogError("No valid test items found in array!");
             return;
         }
-        
+
         var randomItem = testItems[Random.Range(0, testItems.Length)];
-        
+
         if (randomItem == null)
         {
             Debug.LogError("Random item is null!");
             return;
         }
-        
+
         // var randomQuantity = randomItem.maxStackSize > 1 ? Random.Range(1, randomItem.maxStackSize + 1) : 1;
         var success = InventorySystem.Instance.AddItem(randomItem, 1);
 
